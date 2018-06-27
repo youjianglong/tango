@@ -1,21 +1,20 @@
-Tango [简体中文](README_CN.md)
-=======================
+# Tango [简体中文](README_CN.md)
 
-[![CircleCI](https://circleci.com/gh/lunny/tango.svg?style=shield)](https://circleci.com/gh/lunny/tango)  [![codecov](https://codecov.io/gh/lunny/tango/branch/master/graph/badge.svg)](https://codecov.io/gh/lunny/tango)
-[![](https://goreportcard.com/badge/github.com/lunny/tango)](https://goreportcard.com/report/github.com/lunny/tango)
+[![CircleCI](https://circleci.com/gh/youjianglong/tango.svg?style=shield)](https://circleci.com/gh/youjianglong/tango) [![codecov](https://codecov.io/gh/youjianglong/tango/branch/master/graph/badge.svg)](https://codecov.io/gh/youjianglong/tango)
+[![](https://goreportcard.com/badge/github.com/youjianglong/tango)](https://goreportcard.com/report/github.com/youjianglong/tango)
 [![Join the chat at https://img.shields.io/discord/323705316027924491.svg](https://img.shields.io/discord/323705316027924491.svg)](https://discord.gg/7Ckxjwu)
 
 ![Tango Logo](logo.png)
 
 Package tango is a micro & pluggable web framework for Go.
 
-##### Current version: v0.5.0   [Version History](https://github.com/lunny/tango/releases)
+##### Current version: v0.5.0 [Version History](https://github.com/youjianglong/tango/releases)
 
 ## Getting Started
 
 To install Tango:
 
-    go get github.com/lunny/tango
+    go get github.com/youjianglong/tango
 
 A classic usage of Tango below:
 
@@ -24,7 +23,7 @@ package main
 
 import (
     "errors"
-    "github.com/lunny/tango"
+    "github.com/youjianglong/tango"
 )
 
 type Action struct {
@@ -48,11 +47,13 @@ func main() {
 ```
 
 Then visit `http://localhost:8000` on your browser. You will get
+
 ```
 {"say":"Hello tango!"}
 ```
 
 If you change `true` after `if` to `false`, then you will get
+
 ```
 {"err":"something error"}
 ```
@@ -72,13 +73,13 @@ Middlewares allow you easily plugin features for your Tango applications.
 
 There are already many [middlewares](https://github.com/tango-contrib) to simplify your work:
 
-- [recovery](https://github.com/lunny/tango/wiki/Recovery) - recover after panic
-- [compress](https://github.com/lunny/tango/wiki/Compress) - Gzip & Deflate compression
-- [static](https://github.com/lunny/tango/wiki/Static) - Serves static files
-- [logger](https://github.com/lunny/tango/wiki/Logger) - Log the request & inject Logger to action struct
-- [param](https://github.com/lunny/tango/wiki/Params) - get the router parameters
-- [return](https://github.com/lunny/tango/wiki/Return) - Handle the returned value smartlly
-- [context](https://github.com/lunny/tango/wiki/Context) - Inject context to action struct
+- [recovery](https://github.com/youjianglong/tango/wiki/Recovery) - recover after panic
+- [compress](https://github.com/youjianglong/tango/wiki/Compress) - Gzip & Deflate compression
+- [static](https://github.com/youjianglong/tango/wiki/Static) - Serves static files
+- [logger](https://github.com/youjianglong/tango/wiki/Logger) - Log the request & inject Logger to action struct
+- [param](https://github.com/youjianglong/tango/wiki/Params) - get the router parameters
+- [return](https://github.com/youjianglong/tango/wiki/Return) - Handle the returned value smartlly
+- [context](https://github.com/youjianglong/tango/wiki/Context) - Inject context to action struct
 - [session](https://github.com/tango-contrib/session) - [![CircleCI](https://circleci.com/gh/tango-contrib/session/tree/master.svg?style=svg)](https://circleci.com/gh/tango-contrib/session/tree/master) [![codecov](https://codecov.io/gh/tango-contrib/session/branch/master/graph/badge.svg)](https://codecov.io/gh/tango-contrib/session) Session manager, [session-redis](http://github.com/tango-contrib/session-redis), [session-nodb](http://github.com/tango-contrib/session-nodb), [session-ledis](http://github.com/tango-contrib/session-ledis), [session-ssdb](http://github.com/tango-contrib/session-ssdb)
 - [xsrf](https://github.com/tango-contrib/xsrf) - [![CircleCI](https://circleci.com/gh/tango-contrib/xsrf/tree/master.svg?style=svg)](https://circleci.com/gh/tango-contrib/xsrf/tree/master) [![codecov](https://codecov.io/gh/tango-contrib/xsrf/branch/master/graph/badge.svg)](https://codecov.io/gh/tango-contrib/xsrf) Generates and validates csrf tokens
 - [binding](https://github.com/tango-contrib/binding) - [![CircleCI](https://circleci.com/gh/tango-contrib/binding/tree/master.svg?style=svg)](https://circleci.com/gh/tango-contrib/binding/tree/master) [![codecov](https://codecov.io/gh/tango-contrib/binding/branch/master/graph/badge.svg)](https://codecov.io/gh/tango-contrib/binding) Bind and validates forms
@@ -98,7 +99,7 @@ There are already many [middlewares](https://github.com/tango-contrib) to simpli
 
 - [Manual](http://gobook.io/read/github.com/go-tango/manual-en-US/), And you are welcome to contribue for the book by git PR to [github.com/go-tango/manual-en-US](https://github.com/go-tango/manual-en-US)
 - [操作手册](http://gobook.io/read/github.com/go-tango/manual-zh-CN/)，您也可以访问 [github.com/go-tango/manual-zh-CN](https://github.com/go-tango/manual-zh-CN)为本手册进行贡献
-- [API Reference](https://gowalker.org/github.com/lunny/tango)
+- [API Reference](https://gowalker.org/github.com/youjianglong/tango)
 
 ## Discuss
 

@@ -1,39 +1,41 @@
-Tango [![CircleCI](https://circleci.com/gh/lunny/tango.svg?style=shield)](https://circleci.com/gh/lunny/tango)  [![codecov](https://codecov.io/gh/lunny/tango/branch/master/graph/badge.svg)](https://codecov.io/gh/lunny/tango)
-[![](https://goreportcard.com/badge/github.com/lunny/tango)](https://goreportcard.com/report/github.com/lunny/tango)
+Tango [![CircleCI](https://circleci.com/gh/youjianglong/tango.svg?style=shield)](https://circleci.com/gh/youjianglong/tango) [![codecov](https://codecov.io/gh/youjianglong/tango/branch/master/graph/badge.svg)](https://codecov.io/gh/youjianglong/tango)
+[![](https://goreportcard.com/badge/github.com/youjianglong/tango)](https://goreportcard.com/report/github.com/youjianglong/tango)
 [![Join the chat at https://img.shields.io/discord/323705316027924491.svg](https://img.shields.io/discord/323705316027924491.svg)](https://discord.gg/7Ckxjwu)
 [English](README.md)
 =======================
 
 ![Tango Logo](logo.png)
 
-Tango 是一个微内核的Go语言Web框架，采用模块化和注入式的设计理念。开发者可根据自身业务逻辑来选择性的装卸框架的功能，甚至利用丰富的中间件来搭建一个全栈式Web开发框架。
+Tango 是一个微内核的 Go 语言 Web 框架，采用模块化和注入式的设计理念。开发者可根据自身业务逻辑来选择性的装卸框架的功能，甚至利用丰富的中间件来搭建一个全栈式 Web 开发框架。
 
 ## 最近更新
-- [2016-5-12] 开放Route级别中间件支持
-- [2016-3-16] Group完善中间件支持，Route支持中间件
-- [2016-2-1] 新增 session-ssdb，支持将ssdb作为session的后端存储
+
+- [2016-5-12] 开放 Route 级别中间件支持
+- [2016-3-16] Group 完善中间件支持，Route 支持中间件
+- [2016-2-1] 新增 session-ssdb，支持将 ssdb 作为 session 的后端存储
 - [2015-10-23] 更新[renders](https://github.com/tango-contrib/renders)插件，解决模板修改后需要刷新两次才能生效的问题
 
 ## 特性
+
 - 强大而灵活的路由设计
 - 兼容已有的 `http.Handler`
 - 基于中间件的模块化设计，灵活定制框架功能
 - 高性能的依赖注入方式
 
-## 安装Tango：
+## 安装 Tango：
 
-    go get github.com/lunny/tango
+    go get github.com/youjianglong/tango
 
 ## 快速入门
 
-一个经典的Tango例子如下：
+一个经典的 Tango 例子如下：
 
 ```go
 package main
 
 import (
     "errors"
-    "github.com/lunny/tango"
+    "github.com/youjianglong/tango"
 )
 
 type Action struct {
@@ -56,53 +58,53 @@ func main() {
 }
 ```
 
-然后在浏览器访问`http://localhost:8000`, 将会得到一个json返回
+然后在浏览器访问`http://localhost:8000`, 将会得到一个 json 返回
 
 ```
 {"say":"Hello tango!"}
 ```
 
-如果将上述例子中的 `true` 改为 `false`, 将会得到一个json返回
+如果将上述例子中的 `true` 改为 `false`, 将会得到一个 json 返回
 
 ```
 {"err":"something error"}
 ```
 
-这段代码因为拥有一个内嵌的`tango.JSON`，所以返回值会被自动的转成Json
+这段代码因为拥有一个内嵌的`tango.JSON`，所以返回值会被自动的转成 Json
 
 ## 文档
 
 - [Manual](http://gobook.io/read/github.com/go-tango/manual-en-US/), And you are welcome to contribue for the book by git PR to [github.com/go-tango/manual-en-US](https://github.com/go-tango/manual-en-US)
 - [操作手册](http://gobook.io/read/github.com/go-tango/manual-zh-CN/)，您也可以访问 [github.com/go-tango/manual-zh-CN](https://github.com/go-tango/manual-zh-CN)为本手册进行贡献
-- [API Reference](https://gowalker.org/github.com/lunny/tango)
+- [API Reference](https://gowalker.org/github.com/youjianglong/tango)
 
 ## 交流讨论
 
-- QQ群：369240307
+- QQ 群：369240307
 - [论坛](https://groups.google.com/forum/#!forum/go-tango)
 
 ## 使用案例
 
 - [会计人论坛](https://www.kuaijiren.com) - 会计人论坛
 - [GopherTC](https://github.com/jimmykuu/gopher/tree/2.0) - Golang China
-- [Wego](https://github.com/go-tango/wego)  tango结合[xorm](http://www.xorm.io/)开发的论坛
+- [Wego](https://github.com/go-tango/wego) tango 结合[xorm](http://www.xorm.io/)开发的论坛
 - [Pugo](https://github.com/go-xiaohei/pugo) 博客
-- [DBWeb](https://github.com/go-xorm/dbweb) 基于Web的数据库管理工具
-- [Godaily](http://godaily.org) - [github](https://github.com/godaily/news) RSS聚合工具
-- [Gos](https://github.com/go-tango/gos)  简易的Web静态文件服务端
-- [GoFtpd](https://github.com/goftp/ftpd) - 纯Go的跨平台FTP服务器
+- [DBWeb](https://github.com/go-xorm/dbweb) 基于 Web 的数据库管理工具
+- [Godaily](http://godaily.org) - [github](https://github.com/godaily/news) RSS 聚合工具
+- [Gos](https://github.com/go-tango/gos) 简易的 Web 静态文件服务端
+- [GoFtpd](https://github.com/goftp/ftpd) - 纯 Go 的跨平台 FTP 服务器
 
 ## 中间件列表
 
 [中间件](https://github.com/tango-contrib)可以重用代码并且简化工作：
 
-- [recovery](https://github.com/lunny/tango/wiki/Recovery) - recover after panic
-- [compress](https://github.com/lunny/tango/wiki/Compress) - Gzip & Deflate compression
-- [static](https://github.com/lunny/tango/wiki/Static) - Serves static files
-- [logger](https://github.com/lunny/tango/wiki/Logger) - Log the request & inject Logger to action struct
-- [param](https://github.com/lunny/tango/wiki/Params) - get the router parameters
-- [return](https://github.com/lunny/tango/wiki/Return) - Handle the returned value smartlly
-- [context](https://github.com/lunny/tango/wiki/Context) - Inject context to action struct
+- [recovery](https://github.com/youjianglong/tango/wiki/Recovery) - recover after panic
+- [compress](https://github.com/youjianglong/tango/wiki/Compress) - Gzip & Deflate compression
+- [static](https://github.com/youjianglong/tango/wiki/Static) - Serves static files
+- [logger](https://github.com/youjianglong/tango/wiki/Logger) - Log the request & inject Logger to action struct
+- [param](https://github.com/youjianglong/tango/wiki/Params) - get the router parameters
+- [return](https://github.com/youjianglong/tango/wiki/Return) - Handle the returned value smartlly
+- [context](https://github.com/youjianglong/tango/wiki/Context) - Inject context to action struct
 - [session](https://github.com/tango-contrib/session) - [![CircleCI](https://circleci.com/gh/tango-contrib/session/tree/master.svg?style=svg)](https://circleci.com/gh/tango-contrib/session/tree/master) [![codecov](https://codecov.io/gh/tango-contrib/session/branch/master/graph/badge.svg)](https://codecov.io/gh/tango-contrib/session) Session manager, [session-redis](http://github.com/tango-contrib/session-redis), [session-nodb](http://github.com/tango-contrib/session-nodb), [session-ledis](http://github.com/tango-contrib/session-ledis), [session-ssdb](http://github.com/tango-contrib/session-ssdb)
 - [xsrf](https://github.com/tango-contrib/xsrf) - [![CircleCI](https://circleci.com/gh/tango-contrib/xsrf/tree/master.svg?style=svg)](https://circleci.com/gh/tango-contrib/xsrf/tree/master) [![codecov](https://codecov.io/gh/tango-contrib/xsrf/branch/master/graph/badge.svg)](https://codecov.io/gh/tango-contrib/xsrf) Generates and validates csrf tokens
 - [binding](https://github.com/tango-contrib/binding) - [![CircleCI](https://circleci.com/gh/tango-contrib/binding/tree/master.svg?style=svg)](https://circleci.com/gh/tango-contrib/binding/tree/master) [![codecov](https://codecov.io/gh/tango-contrib/binding/branch/master/graph/badge.svg)](https://codecov.io/gh/tango-contrib/binding) Bind and validates forms
@@ -119,4 +121,5 @@ func main() {
 - [rbac](https://github.com/tango-contrib/rbac) - [![CircleCI](https://circleci.com/gh/tango-contrib/rbac/tree/master.svg?style=svg)](https://circleci.com/gh/tango-contrib/rbac/tree/master) [![codecov](https://codecov.io/gh/tango-contrib/rbac/branch/master/graph/badge.svg)](https://codecov.io/gh/tango-contrib/rbac) rbac control
 
 ## License
+
 This project is under BSD License. See the [LICENSE](LICENSE) file for the full license text.
