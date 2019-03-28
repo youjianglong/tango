@@ -30,7 +30,7 @@ func Recovery(debug bool) HandlerFunc {
 				}
 
 				var content = buf.String()
-				ctx.Logger.Error(content)
+				ctx.Logger.Errorln(content)
 
 				if !ctx.Written() {
 					if !debug {
