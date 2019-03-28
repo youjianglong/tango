@@ -5,6 +5,7 @@ import (
 	"fmt"
 	"net/http"
 	"net/http/httptest"
+	"strings"
 	"testing"
 )
 
@@ -40,7 +41,7 @@ type Form2Action struct {
 	Ctx
 }
 
-func (a *Form2Action) Get() string {
+func (a *Form2Action) Post() string {
 	v, _ := a.Forms().Int32("test")
 	return fmt.Sprintf("%d", v)
 }
@@ -51,12 +52,13 @@ func TestForm2(t *testing.T) {
 	recorder.Body = buff
 
 	o := Classic()
-	o.Get("/", new(Form2Action))
+	o.Post("/", new(Form2Action))
 
-	req, err := http.NewRequest("GET", "http://localhost:8000/?test=1", nil)
+	req, err := http.NewRequest("POST", "http://localhost:8000", strings.NewReader("test=1"))
 	if err != nil {
 		t.Error(err)
 	}
+	req.Header.Add("Content-Type", "application/x-www-form-urlencoded")
 
 	o.ServeHTTP(recorder, req)
 	expect(t, recorder.Code, http.StatusOK)

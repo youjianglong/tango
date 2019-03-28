@@ -14,7 +14,7 @@ import (
 
 // Version returns tango's version
 func Version() string {
-	return "0.5.5.0104"
+	return "0.5.5.0412"
 }
 
 // Tango describes tango object
@@ -145,14 +145,14 @@ func getAddress(args ...interface{}) string {
 // Run the http server. Listening on os.GetEnv("PORT") or 8000 by default.
 func (t *Tango) Run(args ...interface{}) {
 	addr := getAddress(args...)
-	t.logger.Info("Listening on http://" + addr)
+	t.logger.Infoln("Listening on http://" + addr)
 
 	t.Server.Addr = addr
 	t.Server.Handler = t
 
 	err := t.ListenAndServe()
 	if err != nil {
-		t.logger.Error(err)
+		t.logger.Errorln(err)
 	}
 }
 
@@ -160,14 +160,14 @@ func (t *Tango) Run(args ...interface{}) {
 func (t *Tango) RunTLS(certFile, keyFile string, args ...interface{}) {
 	addr := getAddress(args...)
 
-	t.logger.Info("Listening on https://" + addr)
+	t.logger.Infoln("Listening on https://" + addr)
 
 	t.Server.Addr = addr
 	t.Server.Handler = t
 
 	err := t.ListenAndServeTLS(certFile, keyFile)
 	if err != nil {
-		t.logger.Error(err)
+		t.logger.Errorln(err)
 	}
 }
 
@@ -223,7 +223,7 @@ func (t *Tango) ServeHTTP(w http.ResponseWriter, req *http.Request) {
 		if ctx.Route() != nil {
 			if ctx.Result == nil {
 				ctx.WriteString("")
-				t.logger.Info(req.Method, ctx.Status(), p)
+				t.logger.Infoln(req.Method, ctx.Status(), p)
 				t.ctxPool.Put(ctx)
 				t.respPool.Put(resp)
 				return
@@ -237,7 +237,7 @@ func (t *Tango) ServeHTTP(w http.ResponseWriter, req *http.Request) {
 
 		ctx.HandleError()
 
-		t.logger.Error(req.Method, ctx.Status(), p)
+		t.logger.Errorln(req.Method, ctx.Status(), p)
 	}
 
 	t.ctxPool.Put(ctx)
@@ -271,14 +271,14 @@ func NewWithLog(logger Logger, handlers ...Handler) *Tango {
 
 // New creates tango with the default logger and handlers
 func New(handlers ...Handler) *Tango {
-	return NewWithLog(NewLogger(os.Stdout), handlers...)
+	return NewWithLog(NewDefaultLogger(os.Stdout), handlers...)
 }
 
 // Classic returns the tango with default handlers and logger
 func Classic(l ...Logger) *Tango {
 	var logger Logger
 	if len(l) == 0 {
-		logger = NewLogger(os.Stdout)
+		logger = NewDefaultLogger(os.Stdout)
 	} else {
 		logger = l[0]
 	}
