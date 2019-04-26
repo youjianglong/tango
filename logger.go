@@ -133,9 +133,13 @@ type DefaultLogger struct {
 	level int
 }
 
+func (t *DefaultLogger) SetLevel(level int) {
+	t.level = level
+}
+
 func (t *DefaultLogger) Debug(v ...interface{}) {
 	if t.level >= LogLevelDebug {
-		t.Logger.Print(append([]interface{}{" DEBUG "}, v...)...)
+		t.Logger.Println(append([]interface{}{" DEBUG "}, v...)...)
 	}
 }
 
@@ -147,13 +151,13 @@ func (t *DefaultLogger) Debugf(format string, v ...interface{}) {
 
 func (t *DefaultLogger) Debugln(v ...interface{}) {
 	if t.level >= LogLevelDebug {
-		t.Logger.Print(append([]interface{}{"DEBUG"}, v...)...)
+		t.Logger.Println(append([]interface{}{"DEBUG"}, v...)...)
 	}
 }
 
 func (t *DefaultLogger) Info(v ...interface{}) {
 	if t.level >= LogLevelInfo {
-		t.Logger.Print(append([]interface{}{" INFO "}, v...)...)
+		t.Logger.Println(append([]interface{}{" INFO "}, v...)...)
 	}
 }
 
@@ -165,13 +169,13 @@ func (t *DefaultLogger) Infof(format string, v ...interface{}) {
 
 func (t *DefaultLogger) Infoln(v ...interface{}) {
 	if t.level >= LogLevelInfo {
-		t.Logger.Print(append([]interface{}{"INFO"}, v...)...)
+		t.Logger.Println(append([]interface{}{"INFO"}, v...)...)
 	}
 }
 
 func (t *DefaultLogger) Warn(v ...interface{}) {
 	if t.level >= LogLevelWarn {
-		t.Logger.Print(append([]interface{}{" WARN "}, v...)...)
+		t.Logger.Println(append([]interface{}{" WARN "}, v...)...)
 	}
 }
 
@@ -183,13 +187,13 @@ func (t *DefaultLogger) Warnf(format string, v ...interface{}) {
 
 func (t *DefaultLogger) Warnln(v ...interface{}) {
 	if t.level >= LogLevelWarn {
-		t.Logger.Print(append([]interface{}{"WARN"}, v...)...)
+		t.Logger.Println(append([]interface{}{"WARN"}, v...)...)
 	}
 }
 
 func (t *DefaultLogger) Error(v ...interface{}) {
 	if t.level >= LogLevelError {
-		t.Logger.Print(append([]interface{}{" ERROR "}, v...)...)
+		t.Logger.Println(append([]interface{}{" ERROR "}, v...)...)
 	}
 }
 
@@ -201,14 +205,15 @@ func (t *DefaultLogger) Errorf(format string, v ...interface{}) {
 
 func (t *DefaultLogger) Errorln(v ...interface{}) {
 	if t.level >= LogLevelError {
-		t.Logger.Print(append([]interface{}{"ERROR"}, v...)...)
+		t.Logger.Println(append([]interface{}{"ERROR"}, v...)...)
 	}
 }
 
 // NewLogger use the default logger with special writer
-func NewDefaultLogger(out io.Writer) Logger {
+func NewDefaultLogger(out io.Writer) *DefaultLogger {
 	l := new(DefaultLogger)
 	l.Logger = log.New(out, "[tango] ", log.LstdFlags|log.Lshortfile|log.Ltime)
+	l.level = LogLevelInfo
 	return l
 }
 
