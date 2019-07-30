@@ -8,16 +8,14 @@ import (
 	"bytes"
 	"net/http"
 	"net/http/httptest"
+	"os"
 	"testing"
-
-	"github.com/youjianglong/log"
 )
 
 func TestLogger1(t *testing.T) {
 	buff := bytes.NewBufferString("")
 	recorder := httptest.NewRecorder()
-
-	n := NewWithLog(log.New(buff, "[tango] ", 0))
+	n := NewWithLog(NewDefaultLogger(os.Stdout))
 	n.Use(Logging())
 	n.UseHandler(http.HandlerFunc(func(rw http.ResponseWriter, r *http.Request) {
 		rw.WriteHeader(http.StatusNotFound)
@@ -71,10 +69,7 @@ func TestLogger3(t *testing.T) {
 	recorder := httptest.NewRecorder()
 	recorder.Body = buff
 
-	logger := NewCompositeLogger(log.Std, log.New(log.NewFileWriter(log.FileOptions{
-		Dir:    "./",
-		ByType: log.ByDay,
-	}), "file", log.Ldefault()))
+	logger := NewCompositeLogger(NewDefaultLogger(os.Stdout), NewDefaultLogger(os.Stderr))
 
 	n := Classic(logger)
 	n.Get("/", new(LoggerAction))
